@@ -1,14 +1,13 @@
 defmodule Cards do
   # create_deck() :: list
   def create_deck do
-    values = ["One", "Two", "Three", "Four", "Five", "Six", "Seven",
-              "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"]
+    values = ["Ace",    "Two",    "Three",  "Four", "Five", "Six",
+              "Seven",  "Eight",  "Nine",   "Ten",  "Jack", "Queen",
+              "King"]
 
-    suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
+    suits = ["Spades",  "Clubs",  "Hearts", "Diamonds"]
 
-    for suit <- suits, value <- values do
-      "#{value} of #{suit}"
-    end
+    for suit <- suits, value <- values, do: "#{value} of #{suit}"
   end
 
   # shuffle(list) :: list
@@ -23,6 +22,7 @@ defmodule Cards do
 
   # deal(list, integer) :: {list, list}
   def deal(deck, hand_size) do
-    Enum.split(deck, hand_size)
+    { hand, rest_of_deck} = Enum.split(deck, hand_size)
+    hand
   end
 end
